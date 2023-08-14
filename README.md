@@ -1,5 +1,5 @@
 # Algorithm
 
-|문제번호|문제|난이도|출처|
-|---|---|---|---|
-|1919|[안녕하세요](https://google.com)|브론즈|[백준](https://naver.com)
+|문제|난이도|출처|
+|---|---|---|
+|[문자열 여러 번 뒤집기](https://google.com)|Lv.0|[프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/181913)
