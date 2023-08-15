@@ -1,4 +1,4 @@
-# [unrated] 배열 만들기 1 - 181901 
+# [level 0] 배열 만들기 1 - 181901 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181901) 
 
