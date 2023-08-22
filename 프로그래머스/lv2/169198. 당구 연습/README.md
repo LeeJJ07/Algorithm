@@ -1,4 +1,4 @@
-# [unrated] 당구 연습 - 169198 
+# [level 2] 당구 연습 - 169198 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/169198) 
 
