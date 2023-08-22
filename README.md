@@ -7,9 +7,9 @@
 |[문자열 나누기](https://github.com/LeeJJ07/Algorithm/blob/main/Programmers/Lv.1/%EB%AC%B8%EC%9E%90%EC%97%B4%20%EB%82%98%EB%88%84%EA%B8%B0.java)|Lv.1|[프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/140108)|
 ***
 백준
-| 날짜 | 문제수 | 문제 | 레벨 |
+| 날짜 | 문제수 | 문제 | 레벨 | 출처 |
 |---|---|---|---|
-| 2023-08-22 | 5 |<details>123<br/>1234<br/>12345|123<br/>1234<br/>12345</details>|
+| 2023-08-22 | 5 |<details>123<br/>1234<br/>12345</details>|<details>123<br/>1234<br/>12345</details>|<details>123<br/>1234<br/>12345</details>|
 
 
 
