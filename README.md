@@ -1,15 +1,8 @@
 # Algorithm
 ***
-프로그래머스
-| 문제 | 난이도 | 출처 |
-|---|---|---|
-|[문자열 여러 번 뒤집기](https://github.com/LeeJJ07/Algorithm/blob/main/Programmers/Lv.0/%EB%AC%B8%EC%9E%90%EC%97%B4%20%EC%97%AC%EB%9F%AC%EB%B2%88%20%EB%92%A4%EC%A7%91%EA%B8%B0.java)|Lv.0|[프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/181913)
-|[문자열 나누기](https://github.com/LeeJJ07/Algorithm/blob/main/Programmers/Lv.1/%EB%AC%B8%EC%9E%90%EC%97%B4%20%EB%82%98%EB%88%84%EA%B8%B0.java)|Lv.1|[프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/140108)|
-***
-백준
 | 날짜 | 문제수 | 문제 | 레벨 | 출처 |
 |---|---|---|---|---|
-| 2023-08-22 | 5 |<details><summary>...</summary>123<br/>1234<br/>12345</details>|<details><summary>...</summary>123<br/>1234<br/>12345</details>|<details><summary>...</summary>123<br/>1234<br/>12345</details>|
+| 2023-08-22 | 6 |<details><summary>...</summary>[짝수의 합](https://github.com/LeeJJ07/Algorithm/blob/main/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/lv0/120831.%E2%80%85%EC%A7%9D%EC%88%98%EC%9D%98%E2%80%85%ED%95%A9/%EC%A7%9D%EC%88%98%EC%9D%98%E2%80%85%ED%95%A9.java)<br/>[같은 숫자는 싫어](https://github.com/LeeJJ07/Algorithm/blob/main/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/lv1/12906.%E2%80%85%EA%B0%99%EC%9D%80%E2%80%85%EC%88%AB%EC%9E%90%EB%8A%94%E2%80%85%EC%8B%AB%EC%96%B4/%EA%B0%99%EC%9D%80%E2%80%85%EC%88%AB%EC%9E%90%EB%8A%94%E2%80%85%EC%8B%AB%EC%96%B4.java)<br/>[체육복](https://github.com/LeeJJ07/Algorithm/blob/main/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/lv1/42862.%E2%80%85%EC%B2%B4%EC%9C%A1%EB%B3%B5/%EC%B2%B4%EC%9C%A1%EB%B3%B5.java)<br/>[짝수와 홀수](https://github.com/LeeJJ07/Algorithm/blob/main/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/lv1/12937.%E2%80%85%EC%A7%9D%EC%88%98%EC%99%80%E2%80%85%ED%99%80%EC%88%98/%EC%A7%9D%EC%88%98%EC%99%80%E2%80%85%ED%99%80%EC%88%98.java)<br/>[당구 연습](https://github.com/LeeJJ07/Algorithm/blob/main/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/lv2/169198.%E2%80%85%EB%8B%B9%EA%B5%AC%E2%80%85%EC%97%B0%EC%8A%B5/%EB%8B%B9%EA%B5%AC%E2%80%85%EC%97%B0%EC%8A%B5.java)<br/>[다음 큰 숫자](https://github.com/LeeJJ07/Algorithm/blob/main/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/lv2/12911.%E2%80%85%EB%8B%A4%EC%9D%8C%E2%80%85%ED%81%B0%E2%80%85%EC%88%AB%EC%9E%90/%EB%8B%A4%EC%9D%8C%E2%80%85%ED%81%B0%E2%80%85%EC%88%AB%EC%9E%90.java)</details>|<details><summary>...</summary>lv0<br/>lv1<br/>lv1<br/>lv1<br/>lv2<br/>lv2</details>|<details><summary>...</summary>[프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/120831)<br/>[프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/12906)<br/>[프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/42862)<br/>[프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/12937)<br/>[프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/169198)<br/>[프로그래머스](https://school.programmers.co.kr/learn/courses/30/lessons/12911)</details>|
 
 
 
