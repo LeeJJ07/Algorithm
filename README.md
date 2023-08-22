@@ -9,7 +9,7 @@
 백준
 | 날짜 | 문제수 | 문제 | 레벨 | 출처 |
 |---|---|---|---|---|
-| 2023-08-22 | 5 |<details><summary>abc</summary>123<br/>1234<br/>12345</details>|<details>123<br/>1234<br/>12345</details>|<details>123<br/>1234<br/>12345</details>|
+| 2023-08-22 | 5 |<details><summary>...</summary>123<br/>1234<br/>12345</details>|<details><summary>...</summary>123<br/>1234<br/>12345</details>|<details><summary>...</summary>123<br/>1234<br/>12345</details>|
 
 
 
