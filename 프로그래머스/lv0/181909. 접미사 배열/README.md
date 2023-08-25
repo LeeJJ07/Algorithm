@@ -1,4 +1,4 @@
-# [unrated] 접미사 배열 - 181909 
+# [level 0] 접미사 배열 - 181909 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181909) 
 
