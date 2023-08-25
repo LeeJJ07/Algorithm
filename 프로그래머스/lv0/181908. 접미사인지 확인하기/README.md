@@ -1,4 +1,4 @@
-# [unrated] 접미사인지 확인하기 - 181908 
+# [level 0] 접미사인지 확인하기 - 181908 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181908) 
 
