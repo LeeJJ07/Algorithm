@@ -22,12 +22,7 @@ class Solution {
         
         // A E I O U;
         StringBuilder sb = new StringBuilder();
-        String[]w = new String[5];
-        w[0] = "A";
-        w[1] = "E";
-        w[2] = "I";
-        w[3] = "O";
-        w[4] = "U";
+        String[]w = {"A","E","I","O","U"};
         count = 0;
         realcount = -1;
         dfs(word,sb,w);
