@@ -1,4 +1,4 @@
-# [unrated] 마법의 엘리베이터 - 148653 
+# [level 2] 마법의 엘리베이터 - 148653 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/148653) 
 
