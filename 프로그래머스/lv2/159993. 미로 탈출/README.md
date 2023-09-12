@@ -1,4 +1,4 @@
-# [unrated] 미로 탈출 - 159993 
+# [level 2] 미로 탈출 - 159993 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/159993) 
 
