@@ -1,4 +1,4 @@
-# [unrated] 롤케이크 자르기 - 132265 
+# [level 2] 롤케이크 자르기 - 132265 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/132265) 
 
