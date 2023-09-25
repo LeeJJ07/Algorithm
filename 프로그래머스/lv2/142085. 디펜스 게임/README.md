@@ -1,4 +1,4 @@
-# [level 3] 디펜스 게임 - 142085 
+# [level 2] 디펜스 게임 - 142085 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/142085?language=java) 
 
