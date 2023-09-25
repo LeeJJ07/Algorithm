@@ -1,4 +1,4 @@
-# [unrated] 숫자 변환하기 - 154538 
+# [level 2] 숫자 변환하기 - 154538 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/154538) 
 
