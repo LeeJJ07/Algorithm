@@ -1,8 +1,9 @@
 #include <iostream>
-#include <vector>
+#include <cmath>
 using namespace std;
 
 void DFS(int number, int n);
+bool isPrime(int num);
 
 int main() {
 	ios::sync_with_stdio(false);
@@ -21,22 +22,23 @@ int main() {
 }
 void DFS(int number, int n) {
 	if (n == 0) {
-		cout << number << "\n";
+		if (isPrime(number)) {
+			cout << number << "\n";
+		}
 		return;
 	}
 	for (int i = 1; i < 10; i++) {
-		if (i == 2 || i == 4 || i == 6 || i == 8)
+		if (i % 2 == 0)
 			continue;
-		int num = number * 10 + i;
-		int count = 0;
-		for (int j = 3; j < num; j++) {
-			if (num % j == 0) {
-				count++;
-				break;
-			}
-		}
-		if (count == 0) {
-			DFS(num, n - 1);
+		if (isPrime(number * 10 + i)) {
+			DFS(number * 10 + i, n - 1);
 		}
 	}
+}
+bool isPrime(int num) {
+	for (int i = 2; i <= (int)sqrt(num); i++) {
+		if (num % i == 0)
+			return false;
+	}
+	return true;
 }
