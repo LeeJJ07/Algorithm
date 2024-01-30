@@ -1,51 +1,38 @@
 #include <iostream>
 #include <vector>
-#include <queue>
 using namespace std;
 
-void BFS(int root);
-static vector<vector<int>> A;
-static vector<int> result;
+static int N;
+static vector<int> answer;
 static vector<bool> visited;
+static vector<vector<int>> tree;
+void DFS(int number);
 
 int main() {
 	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
-	int N;
 	cin >> N;
-	
-	A.resize(N + 1);
-	for (int i = 0; i < N - 1; i++) {
-		int a, b;
-		cin >> a >> b;
-		A[a].push_back(b);
-		A[b].push_back(a);
+	visited.resize(N + 1);
+	tree.resize(N + 1);
+	answer.resize(N + 1);
+
+	for (int i = 1; i < N; i++) {
+		int n1, n2;
+		cin >> n1 >> n2;
+		tree[n1].push_back(n2);
+		tree[n2].push_back(n1);
 	}
-	
-	visited = vector<bool>(N + 1, false);
-	result = vector<int>(N + 1, 0);
-
-	BFS(1);
-
+	DFS(1);
 	for (int i = 2; i <= N; i++) {
-		cout << result[i] << "\n";
+		cout << answer[i] << "\n";
 	}
-	
 }
-void BFS(int root) {
-	queue<int> q;
-	q.push(root);
-	visited[root] = true;
-
-	while (!q.empty()) {
-		int now_node = q.front();
-		q.pop();
-		for (int i : A[now_node]) {
-			if (visited[i])
-				continue;
-			result[i] = now_node;
-			visited[i] = true;
-			q.push(i);
-		}
+void DFS(int number) {
+	visited[number] = true;
+	for (int n : tree[number]) {
+		if (visited[n])
+			continue;
+		answer[n] = number;
+		DFS(n);
 	}
 }
