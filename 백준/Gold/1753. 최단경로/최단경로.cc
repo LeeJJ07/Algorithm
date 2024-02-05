@@ -6,20 +6,21 @@ using namespace std;
 
 typedef pair<int, int> edge;
 static int V, E, K;
-static vector<int> mdistance;
 static vector<bool> visited;
 static vector<vector<edge>> mlist;
+static vector<int> mdistance;
 static priority_queue<edge, vector<edge>, greater<edge>> q;
 
 int main() {
-	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
-	
 	cin >> V >> E >> K;
-	mdistance.resize(V + 1);
-	std::fill(mdistance.begin(), mdistance.end(), INT_MAX);
 	visited.resize(V + 1);
 	std::fill(visited.begin(), visited.end(), false);
+	mdistance.resize(V + 1);
+	std::fill(mdistance.begin(), mdistance.end(), INT_MAX);
 	mlist.resize(V + 1);
 
 	for (int i = 0; i < E; i++) {
@@ -30,16 +31,15 @@ int main() {
 
 	q.push(make_pair(0, K));
 	mdistance[K] = 0;
+
 	while (!q.empty()) {
-		edge cur = q.top();
+		edge now = q.top();
 		q.pop();
-		int c_v = cur.second;
+		int c_v = now.second;
 		if (visited[c_v])
 			continue;
 		visited[c_v] = true;
-
-		for (int i = 0; i < mlist[c_v].size(); i++) {
-			edge tmp = mlist[c_v][i];
+		for (edge tmp : mlist[c_v]) {
 			int next = tmp.first;
 			int value = tmp.second;
 
