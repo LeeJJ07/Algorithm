@@ -11,14 +11,12 @@ int main() {
 	int N, K;
 	cin >> N >> K;
 
-	vector<int> day(N + 1, 0);
 	vector<int> sum(N + 1, 0);
-	for (int i = 1; i <= N; i++) {
-		cin >> day[i];
-	}
-	sum[1] = day[1];
+	cin >> sum[1];
 	for (int i = 2; i <= N; i++) {
-		sum[i] = sum[i - 1] + day[i];
+		int day;
+		cin >> day;
+		sum[i] = sum[i - 1] + day;
 	}
 	int s = 0;
 	int e = K;
