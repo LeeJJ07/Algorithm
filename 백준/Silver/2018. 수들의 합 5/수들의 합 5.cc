@@ -3,32 +3,29 @@
 using namespace std;
 
 int main() {
-
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
 
 	int N;
 	cin >> N;
-	int result = 1;
+	int sum = 0;
+	int s = 1;
+	int e = 1;
+	int result = 0;
+	while (e <= N) {
 
-	int start_idx = 1;
-	int end_idx = 1;
-	int sum = 1;
-	while (end_idx != N) {
-		if (sum == N) {
-			result++;
-			end_idx++;
-			sum += end_idx;
+		if (sum < N) {
+			sum += e++;
 		}
 		else if (sum > N) {
-			sum -= start_idx;
-			start_idx++;
+			sum -= s++;
 		}
 		else {
-			end_idx++;
-			sum += end_idx;
+			result++;
+			sum -= s++;
+			sum += e++;
 		}
 	}
-	cout << result << "\n";
+	cout << result+1 << '\n';
 }
