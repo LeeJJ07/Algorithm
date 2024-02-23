@@ -1,6 +1,5 @@
 #include <iostream>
 #include <queue>
-
 using namespace std;
 
 int main() {
@@ -8,17 +7,17 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int N;
-	cin >> N;
+	int n;
+	cin >> n;
 
-	queue <int> result;
-	for (int i = 1; i <= N; i++) {
-		result.push(i);
+	queue<int> q;
+	for (int i = 1; i <= n; i++)
+		q.push(i);
+	
+	while (q.size() > 1) {
+		q.pop();
+		q.push(q.front());
+		q.pop();
 	}
-	while (result.size() > 1) {
-		result.pop();
-		result.push(result.front());
-		result.pop();
-	}
-	cout << result.front();
+	cout << q.front() << '\n';
 }
