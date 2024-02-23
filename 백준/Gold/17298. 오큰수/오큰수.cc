@@ -1,7 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <stack>
-
+#include <vector>
 using namespace std;
 
 int main() {
@@ -9,25 +8,21 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int N;
-	cin >> N;
-	vector <int> A(N, 0);
-	stack <int> myStack;
-	vector <int> result(N, -1);
+	int n;
+	cin >> n;
 
-	for (int i = 0; i < N; i++) {
-		cin >> A[i];
-	}
-
-	myStack.push(0);
-	for (int i = 1; i < N; i++) {
-		while (!myStack.empty() && A[myStack.top()] < A[i]) {
-			result[myStack.top()] = A[i];
-			myStack.pop();
+	vector<int> A(n, 0);
+	vector<int> result(n, -1);
+	for (int i = 0; i < n; i++) cin >> A[i];
+	
+	stack<int> s;
+	s.push(0);
+	for (int i = 1; i < n; i++) {
+		while (s.size() && A[s.top()] < A[i]) {
+			result[s.top()] = A[i];
+			s.pop();
 		}
-		myStack.push(i);
+		s.push(i);
 	}
-	for (int i = 0; i < N; i++) {
-		cout << result[i] << " ";
-	}
+	for (int i : result) cout << i << ' ';
 }
