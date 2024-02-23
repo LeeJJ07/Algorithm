@@ -1,18 +1,16 @@
 #include <iostream>
-#include <vector>
 #include <queue>
-
 using namespace std;
 
-struct compare {
+struct cmp {
 	bool operator()(int o1, int o2) {
-		int first_abs = abs(o1);
-		int second_abs = abs(o2);
-		if (first_abs == second_abs) {
-			return o1 > o2; //절대값이 같을 때는 음수 우선 정렬
+		int r1 = abs(o1);
+		int r2 = abs(o2);
+		if (r1 == r2) {
+			return o1 > o2;
 		}
 		else {
-			return first_abs > second_abs; // 절댓값을 기준으로 정렬
+			return r1 > r2;
 		}
 	}
 };
@@ -22,25 +20,24 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	priority_queue<int, vector<int>, compare> MyQueue;
-
 	int N;
 	cin >> N;
+	priority_queue<int, vector<int>, cmp> q;
 
 	for (int i = 0; i < N; i++) {
-		int request;
-		cin >> request;
-		if (request == 0) {
-			if (MyQueue.empty()) {
+		int num;
+		cin >> num;
+		
+		if (num == 0) {
+			if (q.empty())
 				cout << "0\n";
-			}
 			else {
-				cout << MyQueue.top() << '\n';;
-				MyQueue.pop();
+				cout << q.top() << '\n';
+				q.pop();
 			}
 		}
 		else {
-			MyQueue.push(request);
+			q.push(num);
 		}
 	}
 }
