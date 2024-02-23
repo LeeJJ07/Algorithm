@@ -1,7 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <stack>
-
+#include <vector>
 using namespace std;
 
 int main() {
@@ -9,45 +8,38 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int N;
-	cin >> N;
-	vector<int> A(N, 0);
-	vector<char> result;
+	int n;
+	cin >> n;
 
-	for (int i = 0; i < N; i++) {
-		cin >> A[i];
-	}
+	stack<int> s;
+	bool result = true;
+	vector<char> ans;
 
-	stack <int> myStack;
-	int num = 1;
-	bool answer = true;
-
-	for (int i = 0; i < N; i++) {
-		int cur = A[i];
-		if (cur >= num) {
-			while (cur >= num) {
-				myStack.push(num++);
-				result.push_back('+');
+	int idx = 1;
+	for (int i = 0; i < n; i++) {
+		int now;
+		cin >> now;
+		if (now >= idx) {
+			while (now >= idx) {
+				s.push(idx++);
+				ans.push_back('+');
 			}
-			myStack.pop();
-			result.push_back('-');
+			s.pop();
+			ans.push_back('-');
 		}
 		else {
-			int n = myStack.top();
-			myStack.pop();
-			if (n > cur) {
+			if (s.top() > now) {
 				cout << "NO";
-				answer = false;
+				result = false;
 				break;
 			}
 			else {
-				result.push_back('-');
+				ans.push_back('-');
 			}
+			s.pop();
 		}
 	}
-	if (answer) {
-		for (int i = 0; i < result.size(); i++) {
-			cout << result[i] << "\n";
-		}
+	if (result) {
+		for (char i : ans) cout << i << '\n';
 	}
 }
