@@ -1,13 +1,34 @@
 #include <iostream>
+#include <vector>
 #include <queue>
 using namespace std;
 
-static int A[101][101];
-static bool visited[101][101] = { false };
-static int dx[] = { 0,1,0,-1 };
-static int dy[] = { 1,0,-1,0 };
-static int N, M;
-void BFS(int i, int j);
+int N, M;
+int dx[4] = { 0,-1,0,1 };
+int dy[4] = { 1,0,-1,0 };
+vector<vector<int>> A;
+vector<vector<int>> visited;
+void BFS(int sx, int sy) {
+	queue<pair<int, int>> q;
+	q.push(make_pair(sx, sy));
+	visited[sx][sy] = 1;
+
+	while (q.size()) {
+		pair<int, int> now = q.front();
+		q.pop();
+		for (int i = 0; i < 4; i++) {
+			int mx = now.first + dx[i];
+			int my = now.second + dy[i];
+			
+			if (mx < 0 || my < 0 || mx >= N || my >= M)
+				continue;
+			if (visited[mx][my] != -1 || A[mx][my]==0)
+				continue;
+			visited[mx][my] = visited[now.first][now.second] + 1;
+			q.push(make_pair(mx, my));
+		}
+	}
+}
 
 int main() {
 	ios::sync_with_stdio(false);
@@ -15,36 +36,20 @@ int main() {
 	cout.tie(NULL);
 
 	cin >> N >> M;
+
+	A.resize(N);
+	visited.resize(N);
+
 	for (int i = 0; i < N; i++) {
-		string str;
-		cin >> str;
+		A[i].resize(M);
+		visited[i].resize(M, -1);
+		string input;
+		cin >> input;
 		for (int j = 0; j < M; j++) {
-			A[i][j] = str[j] - '0';
+			A[i][j] = input[j] - '0';
 		}
 	}
 	BFS(0, 0);
-	cout << A[N - 1][M - 1] << "\n";
-}
-void BFS(int i, int j) {
-	queue<pair<int, int>> myQueue;
-	myQueue.push(make_pair(i, j));
 
-	while (!myQueue.empty()) {
-		int now[2];
-		now[0] = myQueue.front().first;
-		now[1] = myQueue.front().second;
-		myQueue.pop();
-		visited[i][j] = true;
-		for (int k = 0; k < 4; k++) {
-			int x = now[0] + dx[k];
-			int y = now[1] + dy[k];
-			if (x < 0 || y < 0 || x >= N || y >= M)
-				continue;
-			if (A[x][y] == 0 || visited[x][y])
-				continue;
-			visited[x][y] = true;
-			A[x][y] = A[now[0]][now[1]] + 1;
-			myQueue.push(make_pair(x, y));
-		}
-	}
+	cout << visited[N - 1][M - 1] << '\n';
 }
