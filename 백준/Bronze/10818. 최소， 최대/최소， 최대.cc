@@ -13,8 +13,8 @@ int main() {
 	for (int i = 0; i < N; i++) {
 		int num;
 		cin >> num;
-		mn = min(mn, num);
-		mx = max(mx, num);
+		if (mn > num) mn = num;
+		if (mx < num) mx = num;
 	}
 	cout << mn << " " << mx << '\n';
 }
