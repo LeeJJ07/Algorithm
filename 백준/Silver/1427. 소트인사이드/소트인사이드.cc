@@ -1,34 +1,17 @@
 #include <iostream>
 #include <vector>
-#include <string>
-
+#include <algorithm>
 using namespace std;
 
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
-
+	
 	string str;
 	cin >> str;
-	vector<int> A(str.size(), 0);
-	for (int i = 0; i < str.size(); i++) {
-		A[i] = stoi(str.substr(i, 1));
-	}
-	for (int i = 0; i < str.length(); i++) {
-		int Max = i;
-		for(int j = i + 1; j < str.length(); j++) {
-			if (A[j] > A[Max]) {
-				Max = j;
-			}
-		}
-		if (i != Max) {
-			int temp = A[i];
-			A[i] = A[Max];
-			A[Max] = temp;
-		}
-	}
-	for (int i = 0; i < A.size(); i++) {
-		cout << A[i];
-	}
+	vector<char> v;
+	for (int i = 0; i < str.length(); i++) v.push_back(str[i]);
+	sort(v.begin(), v.end(), greater<>());
+	for (int i = 0; i < str.length(); i++)cout << v[i];
 }
