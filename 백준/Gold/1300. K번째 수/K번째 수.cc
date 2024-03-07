@@ -9,22 +9,22 @@ int main() {
 
 	long N, K;
 	cin >> N >> K;
-	long start = 1, end = K;
+	long s = 1, e = K;
 	long ans = 0;
 
-	while (start <= end) {
-		long middle = (start + end) / 2;
+	while (s <= e) {
+		long m = (s + e) / 2;
 		long cnt = 0;
 
 		for (int i = 1; i <= N; i++) {
-			cnt += min(middle / i, N);
+			cnt += min(m / i, N);
 		}
 		if (cnt < K) {
-			start = middle + 1;
+			s = m + 1;
 		}
 		else {
-			ans = middle;
-			end = middle - 1;
+			ans = m;
+			e = m - 1;
 		}
 	}
 	cout << ans << "\n";
