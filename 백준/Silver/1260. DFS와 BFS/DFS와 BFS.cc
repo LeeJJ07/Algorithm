@@ -4,67 +4,47 @@
 #include <algorithm>
 using namespace std;
 
-static vector<vector<int>> A;
-static vector<bool> visited;
+int n, m, start;
+vector<vector<int>> adj;
+vector<int> visited;
 
-void DFS(int v);
-void BFS(int v);
-
+void DFS(int there) {
+	visited[there] = 1;
+	cout << there << ' ';
+	for (int here : adj[there]) {
+		if (visited[here]) continue;
+		DFS(here);
+	}
+}
+void BFS(int there) {
+	queue<int> q;
+	q.push(there);
+	visited[there] = 1;
+	while (q.size()) {
+		int now = q.front();
+		cout << now << ' ';
+		q.pop();
+		for (int next : adj[now]) {
+			if (visited[next]) continue;
+			visited[next] = 1;
+			q.push(next);
+		}
+	}
+}
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	int N, M, S;
-	cin >> N >> M >> S;
-
-	A.resize(N + 1);
-	visited = vector<bool>(N + 1, false);
-
-	for (int i = 0; i < M; i++) {
-		int s, e;
-		cin >> s >> e;
-		A[s].push_back(e);
-		A[e].push_back(s);
-	}
-	for (int i = 1; i <= N; i++) {
-		sort(A[i].begin(), A[i].end());
-	}
-	DFS(S);
-	cout << "\n";
-
-	visited = vector<bool>(N + 1, false);
+	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+	cin >> n >> m >> start;
 	
-	BFS(S);
-	cout << "\n";
-}
-
-void DFS(int v) {
-	cout << v << " ";
-	visited[v] = true;
-	
-	for (int i : A[v]) {
-		if (!visited[i]) {
-			DFS(i);
-		}
+	adj.resize(n + 1);
+	visited.resize(n + 1);
+	for (int i = 0; i < m; i++) {
+		int a, b;
+		cin >> a >> b;
+		adj[a].push_back(b);
+		adj[b].push_back(a);
 	}
+	for (int i = 0; i <= n; i++) sort(adj[i].begin(), adj[i].end());
+	DFS(start);
+	cout << '\n'; fill(visited.begin(), visited.end(), 0);
+	BFS(start);
 }
-void BFS(int s) {
-	
-	queue<int>B;
-	B.push(s);
-	visited[s] = true;
-
-	while (!B.empty()) {
-		int num = B.front();
-		cout << num << " ";
-		B.pop();
-		for (int i : A[num]) {
-			if (!visited[i]) {
-				B.push(i);
-				visited[i] = true;
-			}
-		}
-	}
-}
-
