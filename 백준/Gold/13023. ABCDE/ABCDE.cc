@@ -2,51 +2,44 @@
 #include <vector>
 using namespace std;
 
-static vector<vector<int>> A;
-static vector<bool> visited;
-static bool arrive;
-void DFS(int now, int depth);
+int n, m;
+vector<vector<int>> adj;
+vector<int> visited;
+bool result;
 
-int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	int N, M;
-	cin >> N >> M;
-
-	A.resize(N);
-	visited = vector<bool>(N, false);
-
-	for (int i = 0; i < M; i++) {
-		int s, e;
-		cin >> s >> e;
-		A[s].push_back(e);
-		A[e].push_back(s);
-	}
-	
-	arrive = false;
-	for (int i = 0; i < N; i++) {
-		DFS(i, 1);
-		if (arrive)
-			break;
-	}
-	if (arrive)
-		cout << 1 << "\n";
-	else
-		cout << 0 << "\n";
-}
-void DFS(int now, int depth) {
-	if (depth == 5 || arrive) {
-		arrive = true;
+void DFS(int there, int depth) {
+	if (depth == 5 || result) {
+		result = true;
 		return;
 	}
-	visited[now] = true;
 
-	for (int i : A[now]) {
-		if (!visited[i]) {
-			DFS(i, depth + 1);
-		}
+	for (int here : adj[there]) {
+		if (visited[here]) continue;
+		visited[here] = 1;
+		DFS(here, depth + 1);
+		visited[here] = 0;
 	}
-	visited[now] = false;
+}
+
+int main() {
+	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+	cin >> n >> m;
+	
+	adj.resize(n);
+	visited.resize(n);
+	for (int i = 0; i < m; i++) {
+		int a, b;
+		cin >> a >> b;
+		adj[a].push_back(b);
+		adj[b].push_back(a);
+	}
+	result = false;
+	for (int i = 0; i < n; i++) {
+		if (result) break;
+		visited[i] = 1;
+		DFS(i, 1);
+		visited[i] = 0;
+	}
+	if (result) cout << 1 << '\n';
+	else cout << 0 << '\n';
 }
