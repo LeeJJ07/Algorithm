@@ -1,44 +1,31 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 
-void DFS(int number, int n);
-bool isPrime(int num);
+int n;
 
-int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	int N;
-	cin >> N;
-
-	for (int i = 2; i < 10; i++) {
-		if (i == 2 || i == 3 || i == 5 || i == 7) {
-			DFS(i, N - 1);
-		}
-	}
-
-}
-void DFS(int number, int n) {
-	if (n == 0) {
-		if (isPrime(number)) {
-			cout << number << "\n";
-		}
-		return;
-	}
-	for (int i = 1; i < 10; i++) {
-		if (i % 2 == 0)
-			continue;
-		if (isPrime(number * 10 + i)) {
-			DFS(number * 10 + i, n - 1);
-		}
-	}
-}
-bool isPrime(int num) {
-	for (int i = 2; i <= (int)sqrt(num); i++) {
-		if (num % i == 0)
-			return false;
+bool checkso(int num) {
+	for (int i = 2; i * i <= num; i++) {
+		if (num % i == 0) return false;
 	}
 	return true;
+}
+
+void DFS(int num, int depth) {
+	if (!checkso(num))return;
+	if (depth == n - 1) {
+		cout << num << '\n';
+		return;
+	}
+	for (int i : {1, 3, 7, 9}) {
+		DFS(num * 10 + i, depth + 1);
+	}
+}
+
+int main() {
+	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+	cin >> n;
+	
+	for (int i : {2, 3, 5, 7}) {
+		DFS(i, 0);
+	}
 }
