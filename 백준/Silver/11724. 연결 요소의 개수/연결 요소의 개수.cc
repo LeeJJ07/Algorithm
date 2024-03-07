@@ -1,45 +1,36 @@
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
-static vector<vector<int>> A;
-static vector <bool> visited;
-void DFS(int v);
+vector<vector<int>> adj;
+vector<int> visited;
+int n, m;
+
+void DFS(int there) {
+	visited[there] = 1;
+	for (int here : adj[there]) {
+		if (visited[here])continue;
+		DFS(here);
+	}
+}
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	int N, M;
-	cin >> N >> M;
-
-	A.resize(N + 1);
-	visited = vector<bool>(N + 1, false);
-
-	for (int i = 0; i < M; i++) {
-		int s, e;
-		cin >> s >> e;
-		A[s].push_back(e);
-		A[e].push_back(s);
+	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+	cin >> n >> m;
+	adj.resize(n + 1);
+	visited.resize(n + 1);
+	for (int i = 0; i < m; i++) {
+		int u, v;
+		cin >> u >> v;
+		adj[u].push_back(v);
+		adj[v].push_back(u);
 	}
-	int count = 0;
-	for (int i = 1; i <= N; i++) {
-		if (!visited[i]) {
-			count++;
-			DFS(i);
-		}
+	int result = 0;
+	for (int i = 1; i <= n; i++) {
+		if (visited[i]) continue;
+		DFS(i);
+		result++;
 	}
-	cout << count << "\n";
-}
-void DFS(int v) {
-	if (visited[v])
-		return;
-
-	visited[v] = true;
-
-	for (int i : A[v]) {
-		if (visited[i] == false)
-			DFS(i);
-	}
+	cout << result << '\n';
 }
