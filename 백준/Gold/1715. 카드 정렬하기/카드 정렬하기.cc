@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 #include <queue>
 using namespace std;
 
@@ -7,24 +9,20 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int N;
-	cin >> N;
-	priority_queue<int, vector<int>, greater<int>>pq;
-	int data;
-	for (int i = 0; i < N; i++) {
-		cin >> data;
-		pq.push(data);
+	int n; cin >> n;
+	priority_queue <int, vector<int>, greater<int>> q;
+	for (int i = 0; i < n; i++) {
+		int num; cin >> num;
+		q.push(num);
 	}
-
 	int result = 0;
-	while (pq.size() > 1) {
-		int num1 = pq.top();
-		pq.pop();
-		int num2 = pq.top();
-		pq.pop();
+	while (q.size() > 1) {
+		int num1 = q.top();
+		q.pop();
+		int num2 = q.top();
+		q.pop();
 		result += num1 + num2;
-		pq.push(num1 + num2);
+		q.push(num1 + num2);
 	}
-
-	cout << result << "\n";
+	cout << result << '\n';
 }
