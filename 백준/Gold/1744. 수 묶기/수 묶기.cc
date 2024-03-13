@@ -7,45 +7,28 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int N;
-	cin >> N;
-	priority_queue<int> plus;
-	priority_queue<int, vector<int>, greater<int>> minus;
-	int one = 0;
-	int zero = 0;
-	for (int i = 0; i < N; i++) {
-		int num;
-		cin >> num;
-		if (num == 0) {
-			zero++;
-		}
-		else if (num == 1) {
-			one++;
-		}
-		else if (num < 0) {
-			minus.push(num);
-		}
-		else {
-			plus.push(num);
-		}
+	priority_queue<int> q1;
+	priority_queue<int, vector<int>, greater<int>> q2;
+	int n; cin >> n;
+	int result = 0;
+	for (int i = 0; i < n; i++) {
+		int num; cin >> num;
+		if (num <= 0)q2.push(num);
+		else if (num == 1) result += num;
+		else q1.push(num);
 	}
-	int result = one;
-	while (plus.size() > 1) {
-		int num1 = plus.top(); plus.pop();
-		int num2 = plus.top(); plus.pop();
+	while (q1.size() > 1) {
+		int num1 = q1.top(); q1.pop();
+		int num2 = q1.top(); q1.pop();
 		result += num1 * num2;
 	}
-	if (!plus.empty()) {
-		result += plus.top();
-	}
-	while (minus.size() > 1) {
-		int num1 = minus.top(); minus.pop();
-		int num2 = minus.top(); minus.pop();
+	if(q1.size()) result += q1.top();
+	while (q2.size() > 1) {
+		int num1 = q2.top(); q2.pop();
+		int num2 = q2.top(); q2.pop();
 		result += num1 * num2;
 	}
-	if (!minus.empty() && zero == 0) {
-		result += minus.top();
-	}
-
-	cout << result << "\n";
+	if (q2.size()) result += q2.top();
+	
+	cout << result << '\n';
 }
