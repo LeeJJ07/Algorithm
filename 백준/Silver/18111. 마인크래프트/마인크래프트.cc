@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int n, m, b;
+int n, m, b, num, res = 98765432, resH = 0;
 int a[257];
 
 int main() {
@@ -9,15 +9,8 @@ int main() {
 	cin.tie(NULL); cout.tie(NULL);
 	
 	cin >> n >> m >> b;
-	int res = 98765432;
-	int resH = 0;
-	int sz = n * m;
-	int mx = 0;
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; j++) {
-			int num; cin >> num;
-			a[num]++;
-		}
+	for (int i = 0; i < n * m; i++) {
+		cin >> num; a[num]++;
 	}
 	for (int i = 256; i >= 0; i--) {
 		int build = 0, remove = 0;
