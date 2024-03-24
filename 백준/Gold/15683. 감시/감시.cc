@@ -8,25 +8,14 @@ int room[8][8];
 int dy[] = { -1, 0, 1, 0 };
 int dx[] = { 0, 1, 0, -1 };
 
-void plus_cctv(int y, int x, int d) {
+void pm_cctv(int y, int x, int d, int num) {
 	int ny = y, nx = x;
 	while (true) {
 		ny += dy[d];
 		nx += dx[d];
 		if (ny < 0 || nx < 0 || ny >= n || nx >= m || room[ny][nx] == 6) break;
 		if (room[ny][nx] <= 0) {
-			room[ny][nx]--;
-		}
-	}
-}
-void minus_cctv(int y, int x, int d) {
-	int ny = y, nx = x;
-	while (true) {
-		ny += dy[d];
-		nx += dx[d];
-		if (ny < 0 || nx < 0 || ny >= n || nx >= m || room[ny][nx] == 6) break;
-		if (room[ny][nx] <= 0) {
-			room[ny][nx]++;
+			room[ny][nx] += num;
 		}
 	}
 }
@@ -47,42 +36,42 @@ void dfs(int depth) {
 	int kind = cctv[depth].second;
 	if (kind == 1) {
 		for (int i = 0; i < 4; i++) {
-			plus_cctv(y, x, i);
+			pm_cctv(y, x, i, -1);
 			dfs(depth + 1);
-			minus_cctv(y, x, i);
+			pm_cctv(y, x, i , 1);
 		}
 	}
 	else if (kind == 2) {
 		for (int i = 0; i < 2; i++) {
-			plus_cctv(y, x, i);
-			plus_cctv(y, x, i + 2);
+			pm_cctv(y, x, i, -1);
+			pm_cctv(y, x, i + 2, -1);
 			dfs(depth + 1);
-			minus_cctv(y, x, i);
-			minus_cctv(y, x, i + 2);
+			pm_cctv(y, x, i, 1);
+			pm_cctv(y, x, i + 2, 1);
 		}
 	}
 	else if (kind == 3) {
 		for (int i = 0; i < 4; i++) {
-			plus_cctv(y, x, i);
-			plus_cctv(y, x, (i + 1) % 4);
+			pm_cctv(y, x, i, -1);
+			pm_cctv(y, x, (i + 1) % 4, -1);
 			dfs(depth + 1);
-			minus_cctv(y, x, i);
-			minus_cctv(y, x, (i + 1) % 4);
+			pm_cctv(y, x, i, 1);
+			pm_cctv(y, x, (i + 1) % 4, 1);
 		}
 	}
 	else if (kind == 4) {
-		for (int i = 0; i < 4; i++) plus_cctv(y, x, i);
+		for (int i = 0; i < 4; i++) pm_cctv(y, x, i, -1);
 		for (int i = 0; i < 4; i++) {
-			minus_cctv(y, x, i);
+			pm_cctv(y, x, i, 1);
 			dfs(depth + 1);
-			plus_cctv(y, x, i);
+			pm_cctv(y, x, i, -1);
 		}
-		for (int i = 0; i < 4; i++) minus_cctv(y, x, i);
+		for (int i = 0; i < 4; i++) pm_cctv(y, x, i, 1);
 	}
 	else if (kind == 5) {
-		for (int i = 0; i < 4; i++) plus_cctv(y, x, i);
+		for (int i = 0; i < 4; i++) pm_cctv(y, x, i, -1);
 		dfs(depth + 1);
-		for (int i = 0; i < 4; i++) minus_cctv(y, x, i);
+		for (int i = 0; i < 4; i++) pm_cctv(y, x, i, 1);
 	}
 }
 
