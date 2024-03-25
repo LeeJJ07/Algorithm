@@ -3,15 +3,17 @@
 using namespace std;
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-	
-	int n, m, num; 
-	cin >> n >> m;
-	set<int> a;
-	for (int i = 0; i < n + m; i++) {
-		cin >> num; a.insert(num);
-	}
-	cout << 2 * a.size() - (n + m);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    
+    set<int> s;
+    int a, b, num;
+    cin >> a >> b;
+    for (int i = 0; i < a; i++) {
+        cin >> num; s.insert(num);
+    }
+    for (int i = 0; i < b; i++) {
+        cin >> num; s.insert(num);
+    }
+    cout << 2 * s.size() - a - b << '\n';
 }
