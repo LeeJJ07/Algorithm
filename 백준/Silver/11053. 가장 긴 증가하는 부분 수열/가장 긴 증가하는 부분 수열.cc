@@ -12,7 +12,6 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> num;
         auto lowerPos = lower_bound(lis, lis + len, num);
-        int _pos = (int)(lowerPos - lis);
         if (*lowerPos == INF) len++;
         *lowerPos = num;
     }
