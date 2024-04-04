@@ -1,37 +1,38 @@
 #include <iostream>
 using namespace std;
-int n, res;
-int m[17][17];
-int dy[3][3] = { { 0, 1 }, { 1, 1 }, { 0, 1, 1} };
-int dx[3][3] = { { 1, 1 }, { 0, 1 }, {1, 1, 0} };
-
-void dfs(int y, int x, int i) {
-    if (y == n - 1 && x == n - 1) {
-        res++; return;
-    }
-    for (int j = 0; j < 3; j++) {
-        if ((i == 0 || i == 1) && (j == 2)) continue;
-        int ny = dy[i][j] + y;
-        int nx = dx[i][j] + x;
-        if (ny < 0 || nx < 0 || ny >= n || nx >= n) continue;
-        if (m[ny][nx]) continue;
-        if (j == 1 && (m[ny - 1][nx] == 1 || m[ny][nx - 1] == 1))continue;
-        if (j == 1) dfs(ny, nx, 2);
-        else if ((i == 0 || i == 2) && j == 0) dfs(ny, nx, 0);
-        else if (i == 1 && j == 0) dfs(ny, nx, 1);
-        else if (i == 2 && j == 2) dfs(ny, nx, 1);
-    }
+int n, a[17][17], dp[17][17][3];
+bool check(int y, int x, int d) {
+	if (d == 0 || d == 2) {
+		if (!a[y][x]) return true;
+	}
+	else if (d == 1) {
+		if (a[y][x] == 0 && a[y - 1][x] == 0 && a[y][x - 1] == 0)return true;
+	}
+	return false;
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cin >> m[i][j];
-        }
-    }
-    dfs(0, 1, 0);
-    cout << res << '\n';
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
+	cin >> n;
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= n; j++) {
+			cin >> a[i][j];
+		}
+	}
+	dp[1][2][0] = 1;
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= n; j++) {
+			if (check(i, j + 1, 0)) dp[i][j + 1][0] += dp[i][j][0];
+			if (check(i + 1, j + 1, 1)) dp[i + 1][j + 1][1] += dp[i][j][0];
+
+			if (check(i + 1, j, 2)) dp[i + 1][j][2] += dp[i][j][2];
+			if (check(i + 1, j + 1, 1)) dp[i + 1][j + 1][1] += dp[i][j][2];
+
+			if (check(i, j + 1, 0)) dp[i][j + 1][0] += dp[i][j][1];
+			if (check(i + 1, j, 2)) dp[i + 1][j][2] += dp[i][j][1];
+			if (check(i + 1, j + 1, 1)) dp[i + 1][j + 1][1] += dp[i][j][1];
+		}
+	}
+	cout << dp[n][n][0] + dp[n][n][1] + dp[n][n][2] << '\n';
 }
