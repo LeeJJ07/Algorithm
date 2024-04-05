@@ -1,26 +1,22 @@
 #include <iostream>
-#include <algorithm>
-#define MAX 10001
-#define INF 123456789
+#include <cstring>
+const int INF = 987654321;
 using namespace std;
-
-int coins[MAX];
-int dp[MAX];
+int n, k, a[10001], temp;
 
 int main() {
-	int n, k;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
+
 	cin >> n >> k;
-	for (int i = 1; i <= n; i++) {
-		cin >> coins[i];
-	}
-	for (int i = 1; i <= k; i++) {
-		dp[i] = INF;
-	}
-	for (int i = 1; i <= n; i++) {
-		for (int j = coins[i]; j <= k; j++) {
-			dp[j] = min(dp[j], dp[j - coins[i]] + 1);
+	fill(a, a + 10001, INF);
+	a[0] = 0;
+	for (int i = 0; i < n; i++) {
+		cin >> temp;
+		for (int j = temp; j <= k; j++) {
+			a[j] = min(a[j], a[j - temp] + 1);
 		}
 	}
-	if (dp[k] == INF) cout << -1;
-	else cout << dp[k];
+	if (a[k] == INF) cout << -1 << "\n";
+	else cout << a[k] << "\n";
 }
