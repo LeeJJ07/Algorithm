@@ -38,8 +38,7 @@ int main()
             }
             else
             {
-                it = arrList.insert(it, c);
-                it++;
+                arrList.insert(it, c);
             }
         }
         for (char c : arrList)
