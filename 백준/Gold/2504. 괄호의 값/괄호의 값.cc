@@ -9,11 +9,11 @@ int main()
 	cin.tie(NULL); cout.tie(NULL);
 
 	string input;
-	cin >> input;
-
 	stack<char> stk;
 	int res = 0, count1 = 0, count2 = 0;
 	bool finish = false;
+
+	cin >> input;
 
 	for (int idx = 0; idx < input.size(); idx++)
 	{
@@ -32,17 +32,17 @@ int main()
 			}
 			else if (input[idx] == ')')
 			{
+				if (input[idx - 1] == '(')
+					res += pow(2, count1) * pow(3, count2);
 				count1--;
 				stk.pop();
-				if (input[idx - 1] == '(')
-					res += pow(2, count1) * pow(3, count2) * 2;
 			}
 			else
 			{
+				if (input[idx - 1] == '[')
+					res += pow(2, count1) * pow(3, count2);
 				count2--;
 				stk.pop();
-				if (input[idx - 1] == '[')
-					res += pow(2, count1) * pow(3, count2) * 3;
 			}
 		}
 	}
