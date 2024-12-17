@@ -4,6 +4,9 @@
 
 using namespace std;
 
+int adj[54][54];
+int present[54];
+
 vector<string> split(string s)
 {
     vector<string> res(2); int i;
@@ -13,50 +16,36 @@ vector<string> split(string s)
     return res;
 }
 
-int solution(vector<string> friends, vector<string> gifts)
-{
-    int N = friends.size();
-
+int solution(vector<string> friends, vector<string> gifts) {
+    
     map<string, int> m;
-    for (int i = 0; i < N; i++)
+
+
+    for (int i = 0;i < friends.size();i++)
         m[friends[i]] = i;
 
-    vector<vector<int>> v(N);
-    for (int i = 0; i < N; i++)
-        v[i].resize(N);
-
-    for (int i = 0; i < gifts.size(); i++)
-    {
-        vector<string> vv = split(gifts[i]);
-        v[m[vv[0]]][m[vv[1]]]++;
+    for (int i = 0; i < gifts.size();i++) {
+        vector<string> temp = split(gifts[i]);
+        adj[m[temp[0]]][m[temp[1]]]++;
     }
-
-    vector<int> zisu(N);
-    for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < N; j++)
-        {
+    for (int i = 0;i < friends.size(); i++) {
+        for (int j = 0;j < friends.size();j++) {
             if (i == j) continue;
-            zisu[i] += v[i][j];
-            zisu[j] -= v[i][j];
-        }
-    }
-
-    vector<int> res(N);
-    for (int i = 0; i < N - 1; i++)
-    {
-        for (int j = i + 1; j < N; j++)
-        {
-            if (v[i][j] == v[j][i])
-            {
-                if (zisu[i] > zisu[j]) res[i]++;
-                else if (zisu[i] < zisu[j]) res[j]++;
-            }
-            else if (v[i][j] < v[j][i]) res[j]++;
-            else res[i]++;
+            present[i] += adj[i][j];
+            present[j] -= adj[i][j];
         }
     }
     int answer = 0;
-    for (int i = 0; i < N; i++) answer = max(answer, res[i]);
+    for (int i = 0;i < friends.size();i++) {
+        int temp = 0;
+        for (int j = 0;j < friends.size();j++) {
+            if (i == j) continue;
+            if (adj[i][j] > adj[j][i]) temp++;
+            else if (adj[i][j] == adj[j][i] && present[i] > present[j])
+                temp++;
+        }
+        answer = max(answer, temp);
+    }
+
     return answer;
 }
