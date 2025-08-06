@@ -1,34 +1,25 @@
-#include <iostream>
 #include <vector>
-#include <algorithm>
+#include <iostream>
+
 using namespace std;
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+	
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
 
-	vector<int> A(101 , 0);
-	int a, b, c;
-	cin >> a >> b >> c;
-	for (int i = 0; i < 3; i++) {
-		int start, end;
-		cin >> start >> end;
-		for (int j = start; j < end; j++) {
-			A[j]++;
-		}
+	vector<int> t(101), cost(4);
+	int s, e, result = 0;
+	for (int idx = 1; idx < 4;idx++)
+		cin >> cost[idx];
+	for (int n = 0; n < 3;n++) {
+		cin >> s >> e;
+		for (int idx = s; idx < e;idx++)
+			t[idx]++;
 	}
-	int result = 0;
-	for (int i = 1; i <= 100; i++) {
-		if (A[i] == 3) {
-			result += c*3;
-		}
-		else if (A[i] == 2) {
-			result += b*2;
-		}
-		else if (A[i] == 1) {
-			result += a;
-		}
-	}
-	cout << result << '\n';
+
+	for (int idx = 1;idx < 101;idx++)
+		result += cost[t[idx]] * t[idx];
+
+	cout << result;
 }
