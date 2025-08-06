@@ -1,34 +1,36 @@
-#include <iostream>
 #include <vector>
+#include <iostream>
+
 using namespace std;
 
-int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+int n;
+vector<int> num(26);
+string str;
 
-	int N;
-	cin >> N;
-	vector<int> count(26, 0);
-	for (int i = 0; i < N; i++) {
-		string name;
-		cin >> name;
-		count[name[0] - 'a']++;
+string Result() {
+	string res = "";
+	for (int idx = 0;idx < 26;idx++) {
+		if (num[idx] < 5) continue;
+		res += (idx + 'a');
 	}
-	bool find = false;
-	vector<char> result;
-	for (int i = 0; i < 26; i++) {
-		if (count[i] >= 5) {
-			result.push_back('a' + i);
-			find = true;
-		}
+
+	if (res == "")
+		res = "PREDAJA";
+
+	return res;
+}
+
+int main() {
+	
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
+
+	cin >> n;
+	while (n--)
+	{
+		cin >> str;
+		num[str[0] - 'a']++;
 	}
-	if (find) {
-		for (int i = 0; i < result.size(); i++) {
-			cout << result[i];
-		}
-	}
-	else {
-		cout << "PREDAJA" << '\n';
-	}
+
+	cout << Result();
 }
