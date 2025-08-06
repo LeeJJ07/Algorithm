@@ -1,37 +1,33 @@
 #include <iostream>
 #include <map>
 #include <string>
+
 using namespace std;
 
-bool is_digit(string str) {
-	return atoi(str.c_str()) != 0 || str.compare("0") == 0;
-}
+int n, m, idx;
+string temp;
+map<int, string> dict1;
+map<string, int> dict2;
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+	
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
 
-	int N, M;
-	cin >> N >> M;
-	map<int, string> name;
-	map<string, int> number;
-	for (int i = 1; i <= N; i++) {
-		string input;
-		cin >> input;
-		name[i] = input;
-		number[input] = i;
+	cin >> n >> m;
+	while (n--) {
+		idx++;
+		cin >> temp;
+		dict1[idx] = temp;
+		dict2[temp] = idx;
 	}
-	for (int i = 0; i < M; i++) {
-		string input;
-		cin >> input;
-		if (is_digit(input)) {
-			auto item = name.find(atoi(input.c_str()));
-			cout << item->second << '\n';
-		}
-		else {
-			auto item = number.find(input);
-			cout << item->second << '\n';
-		}
+
+	while (m--) {
+		cin >> temp;
+		if (atoi(temp.c_str()) == 0)
+			cout << dict2[temp];
+		else
+			cout << dict1[atoi(temp.c_str())];
+		cout << '\n';
 	}
 }
