@@ -1,32 +1,29 @@
 #include <iostream>
 #include <stack>
+
 using namespace std;
 
+int n, res;
+string str;
+
 int main() {
-	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-	
-	int N;
-	cin >> N;
-	int result = 0;
-	for (int i = 0; i < N; i++) {
-		string str;
+
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
+
+	cin >> n;
+
+	while (n--) {
 		cin >> str;
-		stack <char> myStack;
-		myStack.push(str[0]);
-		for (int j = 1; j < str.size(); j++) {
-			if (myStack.empty()) {
-				myStack.push(str[j]);
-				continue;
-			}
-			if (myStack.top() == str[j]) {
-				myStack.pop();
-			}
-			else {
-				myStack.push(str[j]);
-			}
+		stack<char> s;
+		for (int i = 0;i < str.size();i++) {
+			if (!s.empty() && s.top() == str[i])
+				s.pop();
+			else
+				s.push(str[i]);
 		}
-		if (myStack.empty())
-			result++;
+		if (s.empty())
+			res++;
 	}
-	cout << result << "\n";
+	cout << res;
 }
