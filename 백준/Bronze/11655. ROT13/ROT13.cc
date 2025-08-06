@@ -1,38 +1,22 @@
 #include <iostream>
-#include <vector>
 #include <string>
+
 using namespace std;
 
-char bigROT(char c) {
-	c += 13;
-	if (c > 'Z') {
-		c -= 26;
-	}
-	return c;
-}
-char smallROT(unsigned char c) {
-	c += 13;
-	if (c > 'z') {
-		c -= 26;
-	}
-	return c;
-}
+string str;
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+	
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
 
-	string s;
-	getline(cin, s);
-	for (int i = 0; i < s.length(); i++) {
-		if (s[i] >= 'a' && s[i] <= 'z') {
-			cout << smallROT(s[i]);
-		}else if (s[i] >= 'A' && s[i] <= 'Z') {
-			cout << bigROT(s[i]);
-		}
-		else {
-			cout << s[i];
-		}
+	getline(cin, str);
+	for (int i = 0;i < str.size();i++) {
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] = (((str[i] - 'A') + 13) % 26) + 'A';
+		else if(str[i] >='a' && str[i]<='z')
+			str[i] = (((str[i] - 'a') + 13) % 26) + 'a';
 	}
+
+	cout << str;
 }
