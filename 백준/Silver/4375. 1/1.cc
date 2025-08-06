@@ -1,27 +1,28 @@
 #include <iostream>
 
 using namespace std;
-typedef long long ll;
+
 int n;
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
 
 	while (scanf("%d", &n) != EOF) {
-		ll cnt = 1, ret = 1;
+		long long num = 1, res = 1;
+		cin >> n;
 		while (true) {
-			if (cnt % n == 0) {
-				printf("%lld\n", ret);
+			
+			if (num % n == 0) {
+				cout << res << '\n';
 				break;
 			}
 			else {
-				cnt = cnt * 10 + 1;
-				cnt %= n;
-				ret++;
+				num = (num * 10) + 1;
+				num %= n;
+				res++;
 			}
 		}
 	}
-	return 0;
 }
